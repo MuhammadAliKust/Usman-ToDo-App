@@ -18,7 +18,7 @@ class GetAllTaskView extends StatelessWidget {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => AddTaskView()));
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       body: StreamProvider.value(
         value: TaskServices().getAllTasks(),
@@ -42,4 +42,6 @@ class GetAllTaskView extends StatelessWidget {
       ),
     );
   }
+
+
 }
