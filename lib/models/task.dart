@@ -9,33 +9,33 @@ TaskModel taskModelFromJson(String str) => TaskModel.fromJson(json.decode(str));
 String taskModelToJson(TaskModel data) => json.encode(data.toJson());
 
 class TaskModel {
-  final String docId;
-  final String title;
-  final String description;
-  final bool isCompleted;
-  final String createdAt;
+  final String? docId;
+  final String? title;
+  final String? description;
+  final bool? isCompleted;
+  final int? createdAt;
 
   TaskModel({
-    required this.docId,
-    required this.title,
-    required this.description,
-    required this.isCompleted,
-    required this.createdAt,
+    this.docId,
+    this.title,
+    this.description,
+    this.isCompleted,
+    this.createdAt,
   });
 
   factory TaskModel.fromJson(Map<String, dynamic> json) => TaskModel(
-        docId: json["docID"],
-        title: json["title"],
-        description: json["description"],
-        isCompleted: json["isCompleted"],
-        createdAt: json["createdAt"],
-      );
+    docId: json["docID"],
+    title: json["title"],
+    description: json["description"],
+    isCompleted: json["isCompleted"],
+    createdAt: json["createdAt"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "docID": docId,
-        "title": title,
-        "description": description,
-        "isCompleted": isCompleted,
-        "createdAt": createdAt,
-      };
+    "docID": docId,
+    "title": title,
+    "description": description,
+    "isCompleted": isCompleted,
+    "createdAt": createdAt,
+  };
 }
