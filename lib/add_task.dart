@@ -38,6 +38,7 @@ class AddTaskView extends StatelessWidget {
                   await TaskServices().createTask(TaskModel(
                       title: titleController.text,
                       description: descriptionController.text,
+
                       isCompleted: false,
                       createdAt: DateTime.now().millisecondsSinceEpoch));
                 } catch (e) {

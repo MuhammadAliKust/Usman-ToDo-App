@@ -1,12 +1,18 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:usman_todo/models/task.dart';
 
 class TaskServices {
   ///Create Task
   Future createTask(TaskModel model) async {
+    DocumentReference docRef =
+        FirebaseFirestore.instance.collection('taskCollection').doc();
+
     return await FirebaseFirestore.instance
         .collection('taskCollection')
-        .add(model.toJson());
+        .doc(docRef.id.toString())
+        .set(model.toJson(docRef.id));
   }
 
   ///Get All Tasks

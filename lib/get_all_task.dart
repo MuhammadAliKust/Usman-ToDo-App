@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:usman_todo/add_task.dart';
@@ -32,9 +34,18 @@ class GetAllTaskView extends StatelessWidget {
                   title: Text(taskList[i].title.toString()),
                   subtitle: Text(taskList[i].description.toString()),
                   leading: const Icon(Icons.task),
-                  trailing: const Row(
+                  trailing: Row(
                     mainAxisSize: MainAxisSize.min,
-                    children: [Icon(Icons.edit), Icon(Icons.delete)],
+                    children: [
+                      Icon(Icons.edit),
+                      IconButton(
+                          onPressed: () {
+                            log(taskList[i].docId.toString());
+                            TaskServices()
+                                .deleteTask(taskList[i].docId.toString());
+                          },
+                          icon: Icon(Icons.delete))
+                    ],
                   ),
                 );
               });
@@ -42,6 +53,4 @@ class GetAllTaskView extends StatelessWidget {
       ),
     );
   }
-
-
 }
