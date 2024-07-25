@@ -18,7 +18,12 @@ class GetAllTaskView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddTaskView()));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AddTaskView(
+                        model: TaskModel(),
+                        isUpdateMode: false,
+                      )));
         },
         child: const Icon(Icons.add),
       ),
@@ -37,7 +42,16 @@ class GetAllTaskView extends StatelessWidget {
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.edit),
+                      IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddTaskView(
+                                        model: taskList[i],
+                                        isUpdateMode: true)));
+                          },
+                          icon: Icon(Icons.edit)),
                       IconButton(
                           onPressed: () {
                             log(taskList[i].docId.toString());
