@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:usman_todo/add_task.dart';
@@ -42,6 +43,14 @@ class GetAllTaskView extends StatelessWidget {
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      CupertinoSwitch(
+                          value: taskList[i].isCompleted!,
+                          onChanged: (val) {
+                            if (taskList[i].isCompleted == false) {
+                              TaskServices().markTaskAsComplete(
+                                  taskList[i].docId.toString());
+                            }
+                          }),
                       IconButton(
                           onPressed: () {
                             Navigator.push(
