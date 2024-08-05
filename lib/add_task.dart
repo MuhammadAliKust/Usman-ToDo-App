@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:usman_todo/get_all_task.dart';
@@ -97,6 +98,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                               title: titleController.text,
                               description: descriptionController.text,
                               isCompleted: false,
+                              userID:  FirebaseAuth.instance.currentUser!.uid.toString(),
                               createdAt: DateTime.now().millisecondsSinceEpoch))
                           .then((value) {
                         isLoading = false;

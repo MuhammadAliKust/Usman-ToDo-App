@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,7 @@ class GetAllTaskView extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
       body: StreamProvider.value(
-        value: TaskServices().getAllTasks(),
+        value: TaskServices().getAllTasks( FirebaseAuth.instance.currentUser!.uid.toString()),
         initialData: [TaskModel()],
         builder: (context, child) {
           List<TaskModel> taskList = context.watch<List<TaskModel>>();

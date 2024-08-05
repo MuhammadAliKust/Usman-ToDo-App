@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:usman_todo/get_all_task.dart';
@@ -27,7 +29,8 @@ class DashBoardView extends StatelessWidget {
                   List<TaskModel> completedTaskList =
                       context.watch<List<TaskModel>>();
                   return StreamProvider.value(
-                      value: TaskServices().getAllTasks(),
+                      value: TaskServices().getAllTasks(
+                          FirebaseAuth.instance.currentUser!.uid.toString()),
                       initialData: [TaskModel()],
                       builder: (context, child) {
                         List<TaskModel> taskList =

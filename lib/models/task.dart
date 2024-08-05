@@ -10,6 +10,7 @@ TaskModel taskModelFromJson(String str) => TaskModel.fromJson(json.decode(str));
 class TaskModel {
   final String? docId;
   final String? title;
+  final String? userID;
   final String? description;
   final bool? isCompleted;
   final int? createdAt;
@@ -19,6 +20,7 @@ class TaskModel {
     this.title,
     this.description,
     this.isCompleted,
+    this.userID,
     this.createdAt,
   });
 
@@ -27,6 +29,7 @@ class TaskModel {
     title: json["title"],
     description: json["description"],
     isCompleted: json["isCompleted"],
+    userID: json["userID"],
     createdAt: json["createdAt"],
   );
 
@@ -35,6 +38,7 @@ class TaskModel {
     "title": title,
     "description": description,
     "isCompleted": isCompleted,
+    "userID": userID,
     "createdAt": createdAt,
   };
 }

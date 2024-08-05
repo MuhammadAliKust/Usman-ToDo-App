@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:usman_todo/get_all_task.dart';
 import 'package:usman_todo/services/auth.dart';
 
 class LoginView extends StatelessWidget {
@@ -32,16 +33,12 @@ class LoginView extends StatelessWidget {
                     if (value!.emailVerified == false) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text("Kindly verify your email address")));
-                    }else{
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: Text(value!.email.toString()),
-                            );
-                          });
+                    } else {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => GetAllTaskView()));
                     }
-
                   });
                 } catch (e) {
                   ScaffoldMessenger.of(context)
