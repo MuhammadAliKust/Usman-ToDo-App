@@ -5,6 +5,7 @@ import 'package:usman_todo/forgot_pwd_view.dart';
 import 'package:usman_todo/get_all_task.dart';
 import 'package:usman_todo/login.dart';
 import 'package:usman_todo/signup.dart';
+import 'package:usman_todo/upload_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginView(),
+      home: UploadFileView(),
     );
   }
 }
